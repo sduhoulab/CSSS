@@ -283,8 +283,8 @@ async function initializeMaps() {
                           '#fee090',
                           '#fdae61',
                           '#f46d43',
-                          '#d73027',
-                          '#a50026'
+                        //   '#d73027',
+                        //   '#a50026'
                         ]
                     },
                 },
@@ -316,7 +316,7 @@ async function initializeMaps() {
                     },
                     controller: {
                         inRange: {
-                            color: ['#66c2a5']
+                            color: ['#b02a02']
                         }
                     }
                 },
@@ -359,7 +359,7 @@ async function initializeMaps() {
                         if(_key === "山东省") {
                             return false; // Hide all villages for province map
                         } else {
-                            return village.county === county;
+                            return village.city === city;
                         }
                     }).map(village => [
                         parseFloat(village.long),
