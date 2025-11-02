@@ -3,6 +3,8 @@ let data;
 let mapData;
 let villageData;
 
+const diseases = ['发热伴', '布鲁氏菌病', '手足口','猩红热','百日咳','肾综合'];
+
 // City/County JSON data
 const cityCountyData = {
   "济南市": ["历下区", "市中区", "槐荫区", "天桥区", "历城区", "长清区", "章丘区"],
@@ -351,15 +353,15 @@ async function initializeMaps() {
                     geoIndex: 0,
                     encode: {
                         // `2` is the dimension index of series.data
-                        tooltip: 3,
-                        label: 3
+                        tooltip: [3,2],
+                        label: [3,2],
                     },
                     data: villageData.filter(village => {
                         // Filter villages for the current map
                         if(_key === "山东省") {
                             return false; // Hide all villages for province map
                         } else {
-                            return village.city === city;
+                            return village.county === county;
                         }
                     }).map(village => [
                         parseFloat(village.long),

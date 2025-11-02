@@ -194,6 +194,11 @@ const debouncedCallback = _.debounce((message) => {
           endDate: data["结束时间"] || ""
         };
 
+        if (!result.disease || !diseases.includes(result.disease) || !result.county || !result.startDate || !result.endDate) {
+          console.error("Missing required fields in the JSON data.");
+          return;
+        }
+
         console.log(result);
         // Output: { disease: '手足口', county: '历下区', startDate: '2024-01-01', endDate: '2024-12-31' }
 
@@ -260,16 +265,16 @@ window.addEventListener('hashchange', function() {
 <script>
 chatBot = new CozeWebSDK.WebChatClient({
   config: {
-    // bot_id: '7562900217298010153',
-    bot_id: '7563837428906573876',
+    bot_id: '7562900217298010153', // Old bot
+    // bot_id: '7563837428906573876', // New bot
   },
   componentProps: {
     title: '对话智能体',
   },
   auth: {
     type: 'token',
-    // token: 'pat_RLdA5zxNjPCW893IKcqs3hLOD6WuCdaewsubjuB5M3kW45u4QszjkV6qT0u3Fras',
-    token: 'pat_Pxyw8SA5vQPLBM2Tu9CETja57xhMMV8naBGPE793csb1vN4J2FPXFu52Q0wzmWhX',
+    token: 'pat_RLdA5zxNjPCW893IKcqs3hLOD6WuCdaewsubjuB5M3kW45u4QszjkV6qT0u3Fras', // Old token
+    // token: 'pat_Pxyw8SA5vQPLBM2Tu9CETja57xhMMV8naBGPE793csb1vN4J2FPXFu52Q0wzmWhX', // New token
     onRefreshToken: function () {
       // return 'pat_RLdA5zxNjPCW893IKcqs3hLOD6WuCdaewsubjuB5M3kW45u4QszjkV6qT0u3Fras'
       return 'pat_Pxyw8SA5vQPLBM2Tu9CETja57xhMMV8naBGPE793csb1vN4J2FPXFu52Q0wzmWhX'
