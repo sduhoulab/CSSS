@@ -348,7 +348,7 @@ async function initializeMaps() {
                     }))
                 },
                 {
-                    type: 'effectScatter',
+                    type: 'scatter',
                     coordinateSystem: 'geo',
                     geoIndex: 0,
                     encode: {
